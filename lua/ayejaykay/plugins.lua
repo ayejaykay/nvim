@@ -14,10 +14,15 @@ end
 local packer_bootstrap = ensure_packer()
 
 require('packer').startup(function(use)
-  use {'wbthomason/packer.nvim'}
-  use {'nvim-telescope/telescope.nvim', tag = '0.1.8', requires = { {'nvim-lua/plenary.nvim'} }}
-  use {'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate'}
-
+	use {'wbthomason/packer.nvim'}
+	use {'nvim-telescope/telescope.nvim', tag = '0.1.8', requires = { {'nvim-lua/plenary.nvim'} }}
+	use {'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate'}
+	use {'neovim/nvim-lspconfig'}
+	use {'hrsh7th/cmp-nvim-lsp'}
+	use {'hrsh7th/cmp-buffer'}
+	use {'hrsh7th/cmp-path'}
+	use {'hrsh7th/cmp-cmdline'}
+	use {'hrsh7th/nvim-cmp'}
 
   if packer_bootstrap then
     require('packer').sync()
@@ -46,4 +51,14 @@ require('nvim-treesitter.configs').setup({
 
 require('telescope').setup({})
 
+-- Nvim-cmp
+
+require('cmp').setup({
+	mapping = require('cmp').mapping.preset.insert({
+		["<Tab>"] = require('cmp').mapping.confirm({ select = true })
+	}),
+	sources = require('cmp').config.sources ({
+		{ name = 'nvim-lsp' } },
+		{ { name = 'buffer' } })
+})
 
