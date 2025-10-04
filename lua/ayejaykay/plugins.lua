@@ -15,6 +15,8 @@ local packer_bootstrap = ensure_packer()
 
 require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
+	use {'catppuccin/nvim', as='catppuccin'}
+	use {'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons' }}
 	use {'nvim-telescope/telescope.nvim', tag = '0.1.8', requires = { {'nvim-lua/plenary.nvim'} }}
 	use {'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate'}
 	use {'neovim/nvim-lspconfig'}
@@ -30,6 +32,74 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+-- Catppuccin
+
+require('catppuccin').setup({
+	transparent_background = true,
+	integrations = {
+		cmp = true,
+		nvimtree = true,
+		lualine = true,
+	},
+})
+
+-- Lualine 
+
+require('lualine').setup({
+	options = {
+	    icons_enabled = true,
+	    theme = 'auto',
+	    component_separators = { left = '', right = ''},
+	    section_separators = { left = '', right = ''},
+	    disabled_filetypes = {
+	      statusline = {},
+	      winbar = {},
+	    },
+	    ignore_focus = {},
+	    always_divide_middle = true,
+	    always_show_tabline = true,
+	    globalstatus = false,
+	    refresh = {
+	      statusline = 1000,
+	      tabline = 1000,
+	      winbar = 1000,
+	      refresh_time = 16, -- ~60fps
+	      events = {
+		'WinEnter',
+		'BufEnter',
+		'BufWritePost',
+		'SessionLoadPost',
+		'FileChangedShellPost',
+		'VimResized',
+		'Filetype',
+		'CursorMoved',
+		'CursorMovedI',
+		'ModeChanged',
+	      },
+	    }
+	  },
+	sections = {
+	    lualine_a = {'mode'},
+	    lualine_b = {'branch', 'diff', 'diagnostics'},
+	    lualine_c = {'filename'},
+	    lualine_x = {'encoding', 'fileformat', 'filetype'},
+	    lualine_y = {'progress'},
+	    lualine_z = {'location'}
+	  },
+	  inactive_sections = {
+	    lualine_a = {},
+	    lualine_b = {},
+	    lualine_c = {'filename'},
+	    lualine_x = {'location'},
+	    lualine_y = {},
+	    lualine_z = {}
+	  },
+	  tabline = {},
+	  winbar = {},
+	  inactive_winbar = {},
+	  extensions = {}
+})
 
 -- Treesitter 
 

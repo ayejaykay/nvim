@@ -1,6 +1,7 @@
 print("settings.lua")
 
-vim.cmd [[hi Normal guibg=NONE ctermbg=NONE]]
+vim.cmd.colorscheme 'catppuccin'
+-- vim.cmd [[hi Normal guibg=NONE ctermbg=NONE]]
 vim.cmd [[hi CursorLine guibg='NvimDarkCyan' ctermbg=NONE]]
 
 vim.cmd [[set number relativenumber]]
