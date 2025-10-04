@@ -19,10 +19,12 @@ require('packer').startup(function(use)
 	use {'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate'}
 	use {'neovim/nvim-lspconfig'}
 	use {'hrsh7th/cmp-nvim-lsp'}
+	use {'hrsh7th/cmp-nvim-lua'}
 	use {'hrsh7th/cmp-buffer'}
 	use {'hrsh7th/cmp-path'}
 	use {'hrsh7th/cmp-cmdline'}
 	use {'hrsh7th/nvim-cmp'}
+	use {'saadparwaiz1/cmp_luasnip'}
 
   if packer_bootstrap then
     require('packer').sync()
@@ -53,12 +55,19 @@ require('telescope').setup({})
 
 -- Nvim-cmp
 
-require('cmp').setup({
-	mapping = require('cmp').mapping.preset.insert({
-		["<Tab>"] = require('cmp').mapping.confirm({ select = true })
+local cmp = require('cmp')
+
+cmp.setup({
+	mapping = cmp.mapping.preset.insert({
+		["<Tab>"] = cmp.mapping.confirm({ select = true })
 	}),
-	sources = require('cmp').config.sources ({
-		{ name = 'nvim-lsp' } },
-		{ { name = 'buffer' } })
+	sources = cmp.config.sources ({
+		{name = 'nvim_lsp'},
+		{name = 'nvim_lua'},
+		{name = 'path'},
+		{name = 'luasnip'},
+		{name = 'buffer', keyword_length = 5},
+	})
 })
+
 
