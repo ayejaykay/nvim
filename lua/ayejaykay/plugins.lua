@@ -16,6 +16,8 @@ local packer_bootstrap = ensure_packer()
 require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'catppuccin/nvim', as='catppuccin'}
+	use {'nvim-tree/nvim-tree.lua'}
+	use {'nvim-tree/nvim-web-devicons'}
 	use {'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons' }}
 	use {'nvim-telescope/telescope.nvim', tag = '0.1.8', requires = { {'nvim-lua/plenary.nvim'} }}
 	use {'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate'}
@@ -43,6 +45,19 @@ require('catppuccin').setup({
 		lualine = true,
 	},
 })
+
+-- nvim-tree
+
+require('nvim-tree').setup({
+	
+})
+
+-- nvim-web-devicons
+
+require('nvim-web-devicons').setup({
+	
+})
+
 
 -- Lualine 
 

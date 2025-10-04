@@ -58,3 +58,10 @@ vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'go to left window' })
 vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = 'go to right window' })
 vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = 'go to up window' })
 vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = 'go to down window' })
+
+
+-- NvimTree 
+
+vim.keymap.set('n', '<leader>nt', function() vim.cmd [[NvimTreeFocus]] end, { desc = 'open nvim tree' })
+
+
