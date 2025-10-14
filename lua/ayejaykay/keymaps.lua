@@ -9,7 +9,14 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-vim.keymap.set('n', '<leader>e', function() builtin.diagnostics({severity = vim.diagnostic.severity.ERROR}) end, { desc = 'Telescope errors' })
+
+-- Diagnostics
+
+vim.keymap.set('n', '<leader>da', function() builtin.diagnostics() end, { desc = 'Telescope diagnostics' })
+vim.keymap.set('n', '<leader>de', function() builtin.diagnostics({severity = vim.diagnostic.severity.ERROR}) end, { desc = 'Telescope dignostics with error filtering' })
+vim.keymap.set('n', '<leader>dw', function() builtin.diagnostics({severity = vim.diagnostic.severity.WARN}) end, { desc = 'Telescope dignostics with warning filtering' })
+vim.keymap.set('n', '<leader>di', function() builtin.diagnostics({severity = vim.diagnostic.severity.INFO}) end, { desc = 'Telescope dignostics with info filtering' })
+vim.keymap.set('n', '<leader>dh', function() builtin.diagnostics({severity = vim.diagnostic.severity.INFO}) end, { desc = 'Telescope dignostics with hint filtering' })
 
 -- Terminal 
 
