@@ -1,5 +1,7 @@
 print("settings.lua")
 
+vim.o.wrap = false
+
 vim.cmd.colorscheme 'catppuccin'
 -- vim.cmd [[hi Normal guibg=NONE ctermbg=NONE]]
 vim.cmd [[hi CursorLine guibg='NvimDarkCyan' ctermbg=NONE]]

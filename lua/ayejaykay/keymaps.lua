@@ -9,6 +9,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>e', function() builtin.diagnostics({severity = vim.diagnostic.severity.ERROR}) end, { desc = 'Telescope errors' })
 
 -- Terminal 
 
@@ -32,6 +33,7 @@ function skip_char(c)
 	end
 end 
 
+
 vim.keymap.set('i', '{', '{}<Left>', { desc = 'test' })
 vim.keymap.set('i', '(', '()<Left>', { desc = 'test' })
 vim.keymap.set('i', '[', '[]<Left>', { desc = 'test' })
@@ -44,7 +46,7 @@ vim.keymap.set('i', "'", function() return skip_char("'") end, { desc = 'test', 
 -- Windows and Tabs
 
 function help_vertical()
-	local topic = input()
+	local topic = vim.fn.input('')
 	vim.cmd(':vert help ' .. topic)
 end
 
