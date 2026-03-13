@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Get the latest neovim (v12 at time of writing)
+
+sudo add-apt-repository ppa:neovim-ppa/unstable
+
+sudo apt-get update
+
+sudo apt-get install neovim
+
 cd ~
 
 lls_dir = ~/lua-language-server
@@ -12,12 +20,12 @@ git clone https://github.com/LuaLS/lua-language-server.git $lls_dir
 
 cd $lls_dir 
 
+chmod +x $lls_dir/make.sh
+
 ./make.sh
 
 chmod +x $lls_dir/bin
 
-echo "export PATH=$PATH:$lls_dir/bin" >> ~/.profile
+export PATH="$PATH:$lls_dir/bin"
 
-
-# there is a whole bunch of stuff i did to get the icons working.  
-# you have to download the jetbrains mono font from the nerdfonts website, and then double click one of the fonts in the zip file to add it to the windows fonts.  then you have to set that in the default terminal settings for it to take hold in wsl.  you may have to change your cursor back too.
+# Download JetBrainsMono nerd font for icon support
